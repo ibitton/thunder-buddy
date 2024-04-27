@@ -5,18 +5,22 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val PERMISSIONS_REQUEST_LOCATION = 100
     }
+
+    private val viewModel: MainViewModel by viewModels()
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -45,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
         when (requestCode) {
             PERMISSIONS_REQUEST_LOCATION -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 requestLocation()
@@ -58,6 +63,8 @@ class MainActivity : AppCompatActivity() {
     private fun requestLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener {
             Log.d("Main", "${it.latitude} ${it.longitude}")
+            viewModel.getCurrentWeather(it.latitude.toString(), it.longitude.toString())
+            viewModel.get5DayForecast(it.latitude.toString(), it.longitude.toString())
         }
     }
 }

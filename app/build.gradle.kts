@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.googleDaggerHiltAndroid)
     alias(libs.plugins.googleDevtoolsKsp)
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 android {
@@ -11,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "dev.itchybit.thunderbuddy"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -45,6 +46,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -58,6 +61,8 @@ dependencies {
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.kotlinx.serialization.json)
+    //Logging
+    implementation(libs.ktor.client.logging)
 
     //Room
     implementation(libs.androidx.room.runtime)
