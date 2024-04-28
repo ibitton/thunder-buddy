@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="current_weather_sp">64sp</dimen>
+    <dimen name="title_sp">32sp</dimen>
+    <dimen name="subtitle_sp">18sp</dimen>
+    <dimen name="small_title_sp">16sp</dimen>
+
+</resources>

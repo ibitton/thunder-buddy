@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ThunderBuddy</string>
+    <string name="min">min</string>
+    <string name="current">Current</string>
+    <string name="max">max</string>
+    <string name="sunny">Sunny</string>
+    <string name="cloudy">Cloudy</string>
+    <string name="rainy">Rainy</string>
+    <string name="navigation_drawer_open">navigation_drawer_open</string>
+    <string name="navigation_drawer_close">navigation_drawer_close</string>
+    <string name="degree">%1$s\u00B0</string>
 </resources>

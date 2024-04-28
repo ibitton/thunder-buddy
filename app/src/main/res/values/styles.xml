@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="WeatherText">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CurrentWeatherTitle" parent="WeatherText">
+        <item name="android:textSize">@dimen/current_weather_sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Title" parent="WeatherText">
+        <item name="android:textSize">@dimen/title_sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Subtitle" parent="WeatherText">
+        <item name="android:textSize">@dimen/subtitle_sp</item>
+    </style>
+
+    <style name="Temp" parent="Subtitle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SmallTitle" parent="WeatherText">
+        <item name="android:textSize">@dimen/small_title_sp</item>
+    </style>
+
+</resources>

@@ -17,12 +17,12 @@ class WeatherService @Inject constructor(private val httpClient: HttpClient) {
     suspend fun getCurrentWeather(latitude: String, longitude: String) =
         httpClient.safeCommonRequest<WeatherResponse> {
             method = HttpMethod.Get
-            url("weather?lat=$latitude&lon=$longitude&appid=$API_KEY")
+            url("weather?lat=$latitude&lon=$longitude&units=metric&appid=$API_KEY")
         }
 
     suspend fun get5DayForecast(latitude: String, longitude: String) =
         httpClient.safeCommonRequest<ForecastResponse> {
             method = HttpMethod.Get
-            url("forecast?lat=$latitude&lon=$longitude&appid=$API_KEY")
+            url("forecast?lat=$latitude&lon=$longitude&units=metric&appid=$API_KEY")
         }
 }

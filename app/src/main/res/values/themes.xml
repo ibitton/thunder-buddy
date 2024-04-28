@@ -1,13 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.ThunderBuddy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.ThunderBuddy" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/sunny</item>
-        <item name="colorPrimaryVariant">@color/rainy</item>
+        <item name="colorPrimary">@color/forest_sunny_background</item>
+        <item name="colorPrimaryVariant">@color/forest_rainy_background</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/cloudy</item>
-        <item name="colorSecondaryVariant">@color/rainy</item>
+        <item name="colorSecondary">@color/forest_cloudy_background</item>
+        <item name="colorSecondaryVariant">@color/forest_rainy_background</item>
         <item name="colorOnSecondary">@android:color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

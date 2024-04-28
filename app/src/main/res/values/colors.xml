@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="sunny">#47AB2F</color>
-    <color name="cloudy">#54717A</color>
-    <color name="rainy">#57575D</color>
+    <color name="forest_sunny_status">#FFD5A4</color>
+    <color name="forest_cloudy_status">#5E8498</color>
+    <color name="forest_rainy_status">#767676</color>
+
+    <color name="forest_sunny_background">#47AB2F</color>
+    <color name="forest_cloudy_background">#54717A</color>
+    <color name="forest_rainy_background">#57575D</color>
+
+    <color name="sea_sunny_status">#F0B90C</color>
+    <color name="sea_cloudy_status">#5E8398</color>
+    <color name="sea_rainy_status">#777676</color>
+
+    <color name="sea_sunny_background">#4A90E2</color>
+    <color name="sea_cloudy_background">#628594</color>
+    <color name="sea_rainy_background">#686868</color>
 </resources>

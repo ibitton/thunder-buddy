@@ -1,10 +1,13 @@
 package dev.itchybit.thunderbuddy
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.itchybit.thunderbuddy.io.api.ApiResponse
+import dev.itchybit.thunderbuddy.io.api.model.current.WeatherResponse
+import dev.itchybit.thunderbuddy.io.api.model.forecast.ForecastResponse
 import dev.itchybit.thunderbuddy.io.repo.WeatherRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,14 +20,19 @@ class MainViewModel @Inject constructor(
     private val json: Json, private val weatherRepository: WeatherRepository
 ) : ViewModel() {
 
+    val currentWeather: MutableLiveData<WeatherResponse> by lazy { MutableLiveData<WeatherResponse>() }
+    val forecast: MutableLiveData<ForecastResponse> by lazy { MutableLiveData<ForecastResponse>() }
+
     fun getCurrentWeather(latitude: String, longitude: String) =
         viewModelScope.launch(Dispatchers.IO) {
             weatherRepository.getCurrentWeather(latitude, longitude).collect {
                 when (it) {
-                    is ApiResponse.Error -> {}
                     is ApiResponse.Success -> {
                         Log.d("VM", json.encodeToString(it.body))
+                        currentWeather.postValue(it.body)
                     }
+
+                    is ApiResponse.Error -> {}
                 }
             }
         }
@@ -33,10 +41,12 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             weatherRepository.get5DayForecast(latitude, longitude).collect {
                 when (it) {
-                    is ApiResponse.Error -> {}
                     is ApiResponse.Success -> {
                         Log.d("VM", json.encodeToString(it.body))
+                        forecast.postValue(it.body)
                     }
+
+                    is ApiResponse.Error -> {}
                 }
             }
         }

@@ -5,7 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class City(
-    val type: Int?,
     val id: Int?,
     val name: String?,
     val coord: Coord?,

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    tools:background="@color/forest_cloudy_background"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/weather_background"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/forest_cloudy" />
+
+    <TextView
+        android:id="@+id/current_weather"
+        style="@style/CurrentWeatherTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:includeFontPadding="false"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="18\u00B0" />
+
+    <TextView
+        android:id="@+id/current_weather_type"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/current_weather"
+        tools:text="CLOUDY" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/SmallTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/current_weather_type"
+        tools:text="Location Name" />
+
+    <TextView
+        android:id="@+id/min_temp"
+        style="@style/Temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toStartOf="@id/current_temp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weather_background"
+        tools:text="16\u00B0" />
+
+    <TextView
+        android:id="@+id/current_temp"
+        style="@style/Temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toStartOf="@id/max_temp"
+        app:layout_constraintStart_toEndOf="@id/min_temp"
+        app:layout_constraintTop_toBottomOf="@id/weather_background"
+        tools:text="18\u00B0" />
+
+    <TextView
+        android:id="@+id/max_temp"
+        style="@style/Temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/current_temp"
+        app:layout_constraintTop_toBottomOf="@id/weather_background"
+        tools:text="23\u00B0" />
+
+    <TextView
+        android:id="@+id/min_temp_label"
+        style="@style/Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:labelFor="@id/min_temp"
+        android:text="@string/min"
+        app:layout_constraintEnd_toStartOf="@id/current_temp_label"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/min_temp" />
+
+    <TextView
+        android:id="@+id/current_temp_label"
+        style="@style/Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:labelFor="@id/current_temp"
+        android:text="@string/current"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_temp_label"
+        app:layout_constraintStart_toEndOf="@id/min_temp_label"
+        app:layout_constraintTop_toBottomOf="@id/current_temp" />
+
+    <TextView
+        android:id="@+id/max_temp_label"
+        style="@style/Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:labelFor="@id/max_temp"
+        android:text="@string/max"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/current_temp_label"
+        app:layout_constraintTop_toBottomOf="@id/max_temp" />
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/current_temp_label" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        tools:listitem="@layout/item_forecast" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
