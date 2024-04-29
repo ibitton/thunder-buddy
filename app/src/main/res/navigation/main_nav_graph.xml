@@ -7,7 +7,27 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="dev.itchybit.thunderbuddy.MainFragment"
+        android:name="dev.itchybit.thunderbuddy.ui.main.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/toMapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/toSettings"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="dev.itchybit.thunderbuddy.ui.map.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/toSettings"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="dev.itchybit.thunderbuddy.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

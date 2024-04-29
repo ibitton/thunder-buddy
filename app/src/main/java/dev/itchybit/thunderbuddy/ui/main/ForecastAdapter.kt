@@ -1,10 +1,11 @@
-package dev.itchybit.thunderbuddy
+package dev.itchybit.thunderbuddy.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import dev.itchybit.thunderbuddy.R
 import dev.itchybit.thunderbuddy.databinding.ItemForecastBinding
 import dev.itchybit.thunderbuddy.io.api.model.current.WeatherResponse
 import dev.itchybit.thunderbuddy.io.api.model.current.WeatherType
@@ -14,7 +15,7 @@ import java.util.Locale
 class ForecastAdapter :
     ListAdapter<WeatherResponse, ForecastAdapter.ViewHolder>(ForecastDiffCallback) {
 
-    inner class ViewHolder(private val binding: ItemForecastBinding) :
+    class ViewHolder(private val binding: ItemForecastBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(weatherResponse: WeatherResponse) = with(binding) {

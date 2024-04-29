@@ -1,19 +1,25 @@
-package dev.itchybit.thunderbuddy
+package dev.itchybit.thunderbuddy.ui.main
 
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
+import androidx.preference.PreferenceManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
+import dev.itchybit.thunderbuddy.R
 import dev.itchybit.thunderbuddy.databinding.ActivityMainBinding
+import dev.itchybit.thunderbuddy.io.api.service.WeatherService
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +44,13 @@ class MainActivity : AppCompatActivity() {
 
         setupUi()
         setupLocationService()
+        observeViewModel()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            true
+        } else super.onOptionsItemSelected(item)
     }
 
     private fun setupUi() = with(binding) {
@@ -46,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val actionBarDrawerToggle = ActionBarDrawerToggle(
+        actionBarDrawerToggle = ActionBarDrawerToggle(
             this@MainActivity,
             drawerLayout,
             toolbar,
@@ -60,6 +75,22 @@ class MainActivity : AppCompatActivity() {
             )
         )
         actionBarDrawerToggle.syncState()
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.map -> findNavController(R.id.nav_host_fragment).let {
+                    if (it.currentDestination?.id == R.id.mainFragment) {
+                        it.navigate(MainFragmentDirections.toMapFragment())
+                    }
+                }
+
+                R.id.settings -> findNavController(R.id.nav_host_fragment).navigate(R.id.settingsFragment)
+
+                else -> {}
+            }
+            drawerLayout.closeDrawers()
+            true
+        }
     }
 
     private fun setupLocationService() {
@@ -95,8 +126,22 @@ class MainActivity : AppCompatActivity() {
     private fun requestLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener {
             Log.d("Main", "${it.latitude} ${it.longitude}")
-            viewModel.getCurrentWeather(it.latitude.toString(), it.longitude.toString())
-            viewModel.get5DayForecast(it.latitude.toString(), it.longitude.toString())
+            viewModel.getCurrentWeather(it.latitude, it.longitude, getWeatherUnitsFromPreferences())
+            viewModel.get5DayForecast(it.latitude, it.longitude, getWeatherUnitsFromPreferences())
         }
     }
+
+    private fun observeViewModel() = with(viewModel) {
+        onMainFragmentResumeEvent.observe(this@MainActivity) {
+            binding.appBarLayout.visibility = if (it) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun getWeatherUnitsFromPreferences(): WeatherService.Units =
+        when (PreferenceManager.getDefaultSharedPreferences(this).getString("units", "metric")) {
+            "standard" -> WeatherService.Units.STANDARD
+            "metric" -> WeatherService.Units.METRIC
+            "imperial" -> WeatherService.Units.IMPERIAL
+            else -> WeatherService.Units.METRIC
+        }
 }

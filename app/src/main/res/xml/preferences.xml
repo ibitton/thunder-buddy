@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <DropDownPreference
+        app:defaultValue="0"
+        app:entries="@array/pref_entries_themes"
+        app:entryValues="@array/pref_entries_themes_values"
+        app:key="theme"
+        app:title="Theme"
+        app:useSimpleSummaryProvider="true" />
+
+    <DropDownPreference
+        app:defaultValue="metric"
+        app:entries="@array/pref_entries_units"
+        app:entryValues="@array/pref_entries_units_values"
+        app:key="units"
+        app:title="Units"
+        app:useSimpleSummaryProvider="true" />
+
+</PreferenceScreen>

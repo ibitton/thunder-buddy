@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.googleDaggerHiltAndroid)
     alias(libs.plugins.googleDevtoolsKsp)
     kotlin("plugin.serialization") version "1.9.22"
+    alias(libs.plugins.mapsPlatformSecretsGradlePlugin)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -36,6 +38,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    secrets {
+        propertiesFileName = "secrets.properties"
+        defaultPropertiesFileName = "local.defaults.properties"
+    }
 }
 
 dependencies {
@@ -53,6 +59,11 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation(libs.gms.play.services.maps)
+    implementation(libs.android.maps.ktx)
+
+    implementation(libs.androidx.preference.ktx)
 
     //Hilt
     implementation(libs.hilt.android)

@@ -1,5 +1,6 @@
 package dev.itchybit.thunderbuddy.io.api.model
 
+import androidx.room.Embedded
 import dev.itchybit.thunderbuddy.io.api.model.current.Coord
 import kotlinx.serialization.Serializable
 
@@ -7,7 +8,7 @@ import kotlinx.serialization.Serializable
 data class City(
     val id: Int?,
     val name: String?,
-    val coord: Coord?,
+    @Embedded val coord: Coord?,
     val country: String?,
     val population: Int?,
     val timezone: Int?,

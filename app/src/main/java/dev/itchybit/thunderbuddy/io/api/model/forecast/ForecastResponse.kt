@@ -1,5 +1,6 @@
 package dev.itchybit.thunderbuddy.io.api.model.forecast
 
+import androidx.room.Embedded
 import dev.itchybit.thunderbuddy.io.api.model.City
 import dev.itchybit.thunderbuddy.io.api.model.current.WeatherResponse
 import kotlinx.serialization.Serializable
@@ -10,5 +11,5 @@ data class ForecastResponse(
     val message: Int?,
     val cnt: Int?,
     val list: List<WeatherResponse>?,
-    val city: City?
+    @Embedded(prefix = "city_") val city: City
 )

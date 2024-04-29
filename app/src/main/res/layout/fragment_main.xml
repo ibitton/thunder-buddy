@@ -52,10 +52,45 @@
         style="@style/SmallTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/current_weather_type"
         tools:text="Location Name" />
+
+    <ImageButton
+        android:id="@+id/previous_favourite"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:contentDescription="@string/previous_favourite"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
+        app:layout_constraintBottom_toBottomOf="@id/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/name" />
+
+    <ImageButton
+        android:id="@+id/next_favourite"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="@string/next_favourite"
+        android:src="@drawable/baseline_arrow_forward_ios_24"
+        app:layout_constraintBottom_toBottomOf="@id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/name" />
+
+    <TextView
+        android:id="@+id/last_updated"
+        style="@style/SmallTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@id/min_temp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="#######" />
 
     <TextView
         android:id="@+id/min_temp"

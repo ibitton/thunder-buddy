@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_entries_themes">
+        <item>Forest</item>
+        <item>Sea</item>
+    </string-array>
+
+    <string-array name="pref_entries_themes_values">
+        <item>forest</item>
+        <item>sea</item>
+    </string-array>
+
+    <string-array name="pref_entries_units">
+        <item>Standard</item>
+        <item>Metric</item>
+        <item>Imperial</item>
+    </string-array>
+
+    <string-array name="pref_entries_units_values">
+        <item>standard</item>
+        <item>metric</item>
+        <item>imperial</item>
+    </string-array>
+
+</resources>

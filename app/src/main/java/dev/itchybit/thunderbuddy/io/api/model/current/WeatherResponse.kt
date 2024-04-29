@@ -1,5 +1,6 @@
 package dev.itchybit.thunderbuddy.io.api.model.current
 
+import androidx.room.Embedded
 import dev.itchybit.thunderbuddy.util.contains
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -25,19 +26,19 @@ sealed class WeatherCode(val ranges: List<IntRange>) {
 
 @Serializable
 data class WeatherResponse(
-    val coord: Coord?,
+    @Embedded val coord: Coord?,
     val weather: List<Weather>?,
     val base: String?,
-    val main: Main?,
+    @Embedded val main: Main?,
     val visibility: Int?,
-    val wind: Wind?,
-    val rain: Volume?,
-    val snow: Volume?,
-    val clouds: Clouds?,
+    @Embedded val wind: Wind?,
+    @Embedded(prefix = "rain_") val rain: Volume?,
+    @Embedded(prefix = "snow_") val snow: Volume?,
+    @Embedded val clouds: Clouds?,
     val pop: Float?,
     val dt: Long?,
     @SerialName("dt_text") val dtText: String?,
-    val sys: Sys?,
+    @Embedded(prefix = "sys") val sys: Sys?,
     val timezone: Int?,
     val id: Int?,
     val name: String?,

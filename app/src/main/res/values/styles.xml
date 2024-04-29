@@ -28,4 +28,8 @@
         <item name="android:textSize">@dimen/small_title_sp</item>
     </style>
 
+    <style name="SmallSubtitle" parent="WeatherText">
+        <item name="android:textSize">@dimen/small_subtitle_sp</item>
+    </style>
+
 </resources>

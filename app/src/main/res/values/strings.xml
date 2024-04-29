@@ -9,4 +9,11 @@
     <string name="navigation_drawer_open">navigation_drawer_open</string>
     <string name="navigation_drawer_close">navigation_drawer_close</string>
     <string name="degree">%1$s\u00B0</string>
+    <string name="map">Map</string>
+    <string name="last_updated">Last updated %1$s ago</string>
+    <string name="add_to_favourites">Add to favourites</string>
+    <string name="previous_favourite">previous favourite</string>
+    <string name="next_favourite">next favourite</string>
+    <string name="delete_favourite">delete favourite</string>
+    <string name="settings">Settings</string>
 </resources>
