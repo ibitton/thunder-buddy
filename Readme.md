@@ -28,11 +28,11 @@ location via the arrow buttons on each side of the location name.
 
 Third party libraries
 =====================
-Google play services location - used to acquire the devices current coordinates.
-Google play services maps - used to display a map and show favourite locations using markers.
-Hilt - Dependency injection
-Ktor - Unified network calls manager
-Kotlin serialization - Used to encode and decode JSON objects
-Room - Database for offline and caching of weather responses
-Navigation - Used to ease fragment navigation and manage backstack
+Google play services location - used to acquire the devices current coordinates  
+Google play services maps - used to display a map and show favourite locations using markers  
+Hilt - Dependency injection  
+Ktor - Unified network calls manager  
+Kotlin serialization - Used to encode and decode JSON objects  
+Room - Database for offline and caching of weather responses  
+Navigation - Used to ease fragment navigation and manage backstack  
 Preference - Used to generate preference screens and manage their associated data
